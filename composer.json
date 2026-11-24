@@ -1,0 +1,69 @@
+{
+    "name": "jeffersongoncalves/laravel-scanner-guard-aws-waf",
+    "description": "AWS WAF denylist sink for laravel-scanner-guard: keeps IP sets in sync so a web ACL rule blocks banned IPs at CloudFront, ALB or API Gateway",
+    "keywords": [
+        "laravel",
+        "scanner-guard",
+        "aws",
+        "waf",
+        "denylist",
+        "security",
+        "firewall"
+    ],
+    "homepage": "https://github.com/jeffersongoncalves/laravel-scanner-guard-aws-waf",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jefferson Gonçalves",
+            "email": "gerson.simao.92@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "aws/aws-sdk-php": "^3.300",
+        "illuminate/contracts": "^12.0|^13.0",
+        "jeffersongoncalves/laravel-scanner-guard": "^2.2.1",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.24",
+        "orchestra/testbench": "^10.0|^11.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JeffersonGoncalves\\ScannerGuardAwsWaf\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JeffersonGoncalves\\ScannerGuardAwsWaf\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint",
+        "analyse": "vendor/bin/phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JeffersonGoncalves\\ScannerGuardAwsWaf\\ScannerGuardAwsWafServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
